@@ -23,6 +23,7 @@
         app:layout_constraintVertical_bias="0.01" />
 
     <LinearLayout
+        android:id="@+id/change_calendar_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingEnd="5dp"
@@ -33,21 +34,25 @@
         app:layout_constraintVertical_bias="0.02">
 
         <TextView
+            android:id="@+id/month_display_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
             android:layout_weight="0.8"
             android:padding="5dp"
-            android:layout_marginStart="15dp"
+            android:text="@string/year_view_text"
             android:textAllCaps="true"
-            android:text="December, 2021"
-            android:textStyle="bold"
+            android:textColor="@color/darker_grey"
             android:textSize="18sp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            android:textStyle="bold" />
+
         <LinearLayout
-            android:gravity="end"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="end">
 
             <ImageButton
+                android:id="@+id/yearly_display_left_shift"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
@@ -56,6 +61,7 @@
                 android:src="@drawable/ic_left_arrow" />
 
             <ImageButton
+                android:id="@+id/yearly_display_right_shift"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -63,7 +69,18 @@
                 android:padding="3dp"
                 android:src="@drawable/ic_right_arrow" />
         </LinearLayout>
-
     </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/yearly_calender_recycler_view"
+        android:layout_width="0dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        tools:listitem="@layout/monthly_calendar_cell_view"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.02"
+        app:layout_constraintTop_toBottomOf="@id/change_calendar_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
