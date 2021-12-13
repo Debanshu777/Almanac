@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/MonthlyView">
+
+    <fragment
+        android:id="@+id/MonthlyView"
+        android:name="com.debanshu777.calendarview.MonthlyView"
+        android:label="@string/monthly_view"
+        tools:layout="@layout/fragment_monthly_view">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/YearlyView" />
+    </fragment>
+    <fragment
+        android:id="@+id/YearlyView"
+        android:name="com.debanshu777.calendarview.YearlyView"
+        android:label="@string/yearly_view"
+        tools:layout="@layout/fragment_yearly_view">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/MonthlyView" />
+    </fragment>
+</navigation>
