@@ -1,4 +1,4 @@
-package com.debanshu777.calendarview.model
+package com.debanshu777.calendarview.utils
 
 sealed class ViewType(val type:String) {
     object YearView: ViewType("YEAR")
