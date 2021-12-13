@@ -6,17 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".view.MonthlyView">
 
-    <TextView
-        android:id="@+id/textview_first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/monthly_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
-        android:id="@+id/button_first"
+        android:id="@+id/year_change_button"
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_height"
         android:background="@drawable/custom_button"
@@ -25,8 +16,74 @@
         android:textAllCaps="false"
         android:textColor="@color/dark_grey"
         android:textSize="@dimen/button_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_first" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01" />
+
+    <LinearLayout
+        android:id="@+id/change_calendar_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingEnd="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/year_change_button"
+        app:layout_constraintVertical_bias="0.02">
+
+        <TextView
+            android:id="@+id/month_display_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_weight="0.8"
+            android:padding="5dp"
+            android:text="December, 2021"
+            android:textAllCaps="true"
+            android:textColor="@color/darker_grey"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end">
+
+            <ImageButton
+                android:id="@+id/month_display_left_shift"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:background="@null"
+                android:padding="3dp"
+                android:src="@drawable/ic_left_arrow" />
+
+            <ImageButton
+
+                android:id="@+id/month_display_right_shift"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="center"
+                android:padding="3dp"
+                android:src="@drawable/ic_right_arrow" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/day_week_view"
+        layout="@layout/day_week_view" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/day_week_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>
