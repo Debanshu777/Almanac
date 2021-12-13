@@ -5,7 +5,7 @@ import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 
 object CalenderUtils {
-    val monthYearFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("MMMM yyyy")
+    val monthYearFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd MMMM yyyy")
 
     fun monthYearFromDate(date: LocalDate): String = date.format(monthYearFormatter)
 

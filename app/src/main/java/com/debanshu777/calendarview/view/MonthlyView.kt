@@ -43,7 +43,7 @@ class MonthlyView : Fragment(), CalendarAdapter.OnItemListener {
         viewModel.selectedDate.observe(
             viewLifecycleOwner, { value ->
                 selectedDate = value
-                Log.i("here",value.toString())
+                Log.i("here", value.toString())
                 val calenderAdapter = CalendarAdapter(daysInMonthArray(value), this)
                 val layoutManager = GridLayoutManager(context, 7)
                 binding.monthlyCalenderRecyclerView.layoutManager = layoutManager
