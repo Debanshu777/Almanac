@@ -1,7 +1,6 @@
 package com.debanshu777.calendarview.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,7 +41,6 @@ class MonthlyView : Fragment(), MonthlyCalendarAdapter.OnItemListener {
         viewModel.selectedDate.observe(
             viewLifecycleOwner, { value ->
                 selectedDate = value
-                Log.i("here", value.toString())
                 val calenderAdapter = MonthlyCalendarAdapter(daysInMonthArray(value), this)
                 val layoutManager = GridLayoutManager(context, 7)
                 binding.monthlyCalenderRecyclerView.layoutManager = layoutManager
