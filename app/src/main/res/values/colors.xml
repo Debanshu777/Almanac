@@ -2,9 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="base_green">#264653</color>
-    <color name="base_yellow">#e9c46a</color>
-    <color name="base_orange">#e76f51</color>
+    <color name="base_orange">#ff6d00</color>
+    <color name="base_yellow">#ffea00</color>
+    <color name="base_violet">#7b2cbf</color>
     <color name="dark_grey">#4A4A4A</color>
     <color name="darker_grey">#202020</color>
 </resources>

@@ -1,14 +1,18 @@
 package com.debanshu777.calendarview.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.debanshu777.calendarview.R
+import java.time.LocalDate
 
 class MonthlyCalendarAdapter(
-    private val daysOfMonth: ArrayList<String>,
+    private val daysOfMonth: ArrayList<LocalDate?>,
     private val onItemListener: OnItemListener
 ) :
     RecyclerView.Adapter<MonthlyCalendarAdapter.MonthlyCalendarViewHolder>() {
@@ -19,7 +23,11 @@ class MonthlyCalendarAdapter(
     }
 
     override fun onBindViewHolder(holder: MonthlyCalendarViewHolder, position: Int) {
-        holder.cellDayText.text = daysOfMonth[position]
+        val date=daysOfMonth[position]
+        holder.cellDayText.text = date?.dayOfMonth?.toString() ?: ""
+        if(LocalDate.now().equals(date)){
+            holder.calenderCell.setBackgroundResource(R.drawable.custom_button)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -34,6 +42,9 @@ class MonthlyCalendarAdapter(
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val cellDayText: TextView = itemView.findViewById(
             R.id.cellDayText
+        )
+        val calenderCell:ConstraintLayout = itemView.findViewById(
+            R.id.calender_cell
         )
         override fun onClick(view: View?) {
             onItemListener.onItemClick(adapterPosition, cellDayText.text as String)

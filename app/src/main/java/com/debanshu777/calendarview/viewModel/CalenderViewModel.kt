@@ -15,12 +15,12 @@ class CalenderViewModel : ViewModel() {
     val yearArrayList:MutableLiveData<ArrayList<String>> = MutableLiveData()
     val yearViewPageNumber:MutableLiveData<Int> = MutableLiveData(0)
     val formatDateString: MutableLiveData<String> =
-        MutableLiveData(selectedDate.value!!.format(CalenderUtils.dayMonthYearFormatter))
+        MutableLiveData(selectedDate.value!!.format(CalenderUtils.monthYearFormatter))
 
     fun setSelectedDate(date: LocalDate) {
         viewModelScope.launch {
             selectedDate.value = date
-            formatDateString.value = selectedDate.value!!.format(CalenderUtils.dayMonthYearFormatter)
+            formatDateString.value = selectedDate.value!!.format(CalenderUtils.monthYearFormatter)
         }
     }
 

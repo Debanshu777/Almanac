@@ -4,11 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.debanshu777.calendarview.R
+import java.time.LocalDate
 
 class WeeklyCalenderAdapter (
-    private val nameOfYear: ArrayList<String>,
+    private val nameOfYear: ArrayList<LocalDate?>,
     private val onItemListener: OnItemListener
 ) :
 RecyclerView.Adapter<WeeklyCalenderAdapter.WeeklyCalenderViewHolder>() {
@@ -19,7 +21,11 @@ RecyclerView.Adapter<WeeklyCalenderAdapter.WeeklyCalenderViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: WeeklyCalenderViewHolder, position: Int) {
-        holder.cellYearText.text = nameOfYear[position]
+        val date = nameOfYear[position]
+        holder.cellYearText.text = date?.dayOfMonth?.toString() ?: ""
+        if(LocalDate.now().equals(date)){
+            holder.calenderCell.setBackgroundResource(R.drawable.custom_button)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -34,6 +40,9 @@ RecyclerView.Adapter<WeeklyCalenderAdapter.WeeklyCalenderViewHolder>() {
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val cellYearText: TextView = itemView.findViewById(
             R.id.cellDayText
+        )
+        val calenderCell: ConstraintLayout = itemView.findViewById(
+            R.id.calender_cell
         )
         override fun onClick(view: View?) {
             onItemListener.onItemClick(adapterPosition, cellYearText.text as String)

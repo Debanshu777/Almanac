@@ -3,11 +3,11 @@
     <style name="Theme.CalenderView" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/base_yellow</item>
-        <item name="colorPrimaryVariant">@color/base_green</item>
+        <item name="colorPrimaryVariant">@color/base_orange</item>
         <item name="colorOnPrimary">@color/darker_grey</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/base_orange</item>
-        <item name="colorSecondaryVariant">@color/base_green</item>
+        <item name="colorSecondary">@color/base_violet</item>
+        <item name="colorSecondaryVariant">@color/base_orange</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/base_yellow</item>
