@@ -1,6 +1,7 @@
 package com.debanshu777.calendarview.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.debanshu777.calendarview.R
 import com.debanshu777.calendarview.adapter.MonthlyCalendarAdapter
+import com.debanshu777.calendarview.adapter.WeeklyCalenderAdapter
 import com.debanshu777.calendarview.databinding.FragmentMonthlyViewBinding
 import com.debanshu777.calendarview.utils.CalenderUtils
 import com.debanshu777.calendarview.utils.CalenderUtils.daysInMonthArray
@@ -41,7 +43,8 @@ class MonthlyView : Fragment(), MonthlyCalendarAdapter.OnItemListener {
         viewModel.selectedDate.observe(
             viewLifecycleOwner, { value ->
                 selectedDate = value
-                val calenderAdapter = MonthlyCalendarAdapter(daysInMonthArray(value), this)
+                val calenderAdapter =
+                    MonthlyCalendarAdapter(daysInMonthArray(value), this, selectedDate)
                 val layoutManager = GridLayoutManager(context, 7)
                 binding.monthlyCalenderRecyclerView.layoutManager = layoutManager
                 binding.monthlyCalenderRecyclerView.adapter = calenderAdapter
@@ -59,6 +62,9 @@ class MonthlyView : Fragment(), MonthlyCalendarAdapter.OnItemListener {
         binding.monthDisplayRightShift.setOnClickListener {
             viewModel.setSelectedDate(selectedDate.plusMonths(1))
         }
+        binding.todayButton.setOnClickListener {
+            viewModel.setSelectedDate(LocalDate.now())
+        }
     }
 
     override fun onDestroyView() {
@@ -67,6 +73,8 @@ class MonthlyView : Fragment(), MonthlyCalendarAdapter.OnItemListener {
     }
 
     override fun onItemClick(position: Int, dayText: String?) {
+        val dateCalculation = if (dayText!!.toInt()>=10) (dayText).toInt() else ("0${dayText}".toInt())
+        viewModel.selectedDate.value=LocalDate.of(selectedDate.year,selectedDate.month,dateCalculation)
         Snackbar.make(
             requireView(),
             "Selected Date: $dayText ${CalenderUtils.monthYearFromDate(selectedDate)}",

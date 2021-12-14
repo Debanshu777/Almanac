@@ -11,7 +11,8 @@ import java.time.LocalDate
 
 class WeeklyCalenderAdapter (
     private val nameOfYear: ArrayList<LocalDate?>,
-    private val onItemListener: OnItemListener
+    private val onItemListener: OnItemListener,
+    private val selectedDate:LocalDate
 ) :
 RecyclerView.Adapter<WeeklyCalenderAdapter.WeeklyCalenderViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeeklyCalenderViewHolder {
@@ -23,6 +24,9 @@ RecyclerView.Adapter<WeeklyCalenderAdapter.WeeklyCalenderViewHolder>() {
     override fun onBindViewHolder(holder: WeeklyCalenderViewHolder, position: Int) {
         val date = nameOfYear[position]
         holder.cellYearText.text = date?.dayOfMonth?.toString() ?: ""
+        if (selectedDate == date){
+            holder.calenderCell.setBackgroundColor(R.drawable.custom_button)
+        }
         if(LocalDate.now().equals(date)){
             holder.calenderCell.setBackgroundResource(R.drawable.custom_button)
         }

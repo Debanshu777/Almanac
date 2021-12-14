@@ -52,6 +52,10 @@ class YearlyView : Fragment(), YearlyCalenderAdapter.OnItemListener {
             viewModel.yearViewPageNumber.value = viewModel.yearViewPageNumber.value?.plus(1)
             viewModel.yearArrayList.value = CalenderUtils.yearArray(currentDate, pageNumber!!)
         }
+        binding.todayButton.setOnClickListener {
+            viewModel.setSelectedDate(LocalDate.now())
+            findNavController().navigate(R.id.action_YearlyView_to_MonthlyView)
+        }
         viewModel.yearArrayList.observe(viewLifecycleOwner,{
             yearArrayList ->
             val calenderAdapter = YearlyCalenderAdapter(yearArrayList, this)
