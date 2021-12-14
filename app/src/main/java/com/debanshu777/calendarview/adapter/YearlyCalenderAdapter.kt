@@ -30,11 +30,15 @@ class YearlyCalenderAdapter(
         fun onItemClick(position: Int, dayText: String?)
     }
 
-    inner class YearlyCalenderViewHolder(itemView: View, private val onItemListener: OnItemListener) :
+    inner class YearlyCalenderViewHolder(
+        itemView: View,
+        private val onItemListener: OnItemListener
+    ) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val cellYearText: TextView = itemView.findViewById(
             R.id.cellYearText
         )
+
         override fun onClick(view: View?) {
             onItemListener.onItemClick(adapterPosition, cellYearText.text as String)
         }

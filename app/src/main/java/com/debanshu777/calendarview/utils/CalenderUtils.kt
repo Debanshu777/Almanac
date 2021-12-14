@@ -15,23 +15,24 @@ object CalenderUtils {
 
     fun monthYearFromDate(date: LocalDate): String = date.format(monthYearFormatter)
 
-    fun daysInWeekArray(date: LocalDate?):ArrayList<LocalDate?>{
+    fun daysInWeekArray(date: LocalDate?): ArrayList<LocalDate?> {
         val daysInWeekList: ArrayList<LocalDate?> = ArrayList()
-        var current:LocalDate? = sundayForDate(date)
+        var current: LocalDate? = sundayForDate(date)
         val endDate = current!!.plusWeeks(1)
-        while (current!!.isBefore(endDate)){
+        while (current!!.isBefore(endDate)) {
             daysInWeekList.add(current)
-            current=current.plusDays(1)
+            current = current.plusDays(1)
         }
         return daysInWeekList
     }
-    private fun sundayForDate(date:LocalDate?):LocalDate?{
+
+    private fun sundayForDate(date: LocalDate?): LocalDate? {
         var current = date
-        val oneWeekAgo:LocalDate=current!!.minusWeeks(1)
-        while (current!!.isAfter(oneWeekAgo)){
+        val oneWeekAgo: LocalDate = current!!.minusWeeks(1)
+        while (current!!.isAfter(oneWeekAgo)) {
             if (current.dayOfWeek == DayOfWeek.SUNDAY)
                 return current
-            current=current.minusDays(1)
+            current = current.minusDays(1)
         }
         return null
     }
@@ -47,7 +48,7 @@ object CalenderUtils {
             if (i <= dayOfWeek || i > (daysInMonth + dayOfWeek)) {
                 daysInMonthList.add(null)
             } else {
-                daysInMonthList.add(LocalDate.of(date.year,date.month,i - dayOfWeek))
+                daysInMonthList.add(LocalDate.of(date.year, date.month, i - dayOfWeek))
             }
         }
         return daysInMonthList

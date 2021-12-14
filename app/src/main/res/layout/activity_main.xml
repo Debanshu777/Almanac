@@ -16,7 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.CalenderView.PopupOverlay" />
+            app:popupTheme="@style/Theme.CalenderView.PopupOverlay"
+            app:titleTextColor="@color/darker_grey" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -29,7 +30,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
-        app:srcCompat="@drawable/ic_calendar_particular"
-        android:contentDescription="@string/particular_date" />
+        android:contentDescription="@string/particular_date"
+        app:srcCompat="@drawable/ic_calendar_particular" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

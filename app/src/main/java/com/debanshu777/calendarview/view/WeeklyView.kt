@@ -45,8 +45,9 @@ class WeeklyView : Fragment(), WeeklyCalenderAdapter.OnItemListener {
         viewModel.selectedDate.observe(
             viewLifecycleOwner, { value ->
                 selectedDate = value
-                val calenderAdapter = WeeklyCalenderAdapter(CalenderUtils.daysInWeekArray(value), this,selectedDate)
-                val layoutManager = GridLayoutManager(context,7)
+                val calenderAdapter =
+                    WeeklyCalenderAdapter(CalenderUtils.daysInWeekArray(value), this, selectedDate)
+                val layoutManager = GridLayoutManager(context, 7)
                 binding.weeklyCalenderRecyclerView.layoutManager = layoutManager
                 binding.weeklyCalenderRecyclerView.adapter = calenderAdapter
             }
@@ -63,8 +64,10 @@ class WeeklyView : Fragment(), WeeklyCalenderAdapter.OnItemListener {
     }
 
     override fun onItemClick(position: Int, dayText: String?) {
-        val dateCalculation = if (dayText!!.toInt()>=10) (dayText).toInt() else ("0${dayText}".toInt())
-        viewModel.selectedDate.value=LocalDate.of(selectedDate.year,selectedDate.month,dateCalculation)
+        val dateCalculation =
+            if (dayText!!.toInt() >= 10) (dayText).toInt() else ("0${dayText}".toInt())
+        viewModel.selectedDate.value =
+            LocalDate.of(selectedDate.year, selectedDate.month, dateCalculation)
         Snackbar.make(
             requireView(),
             "Selected Date: $dayText ${CalenderUtils.monthYearFromDate(selectedDate)}",

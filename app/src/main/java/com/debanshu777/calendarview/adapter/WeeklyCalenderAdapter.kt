@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.debanshu777.calendarview.R
 import java.time.LocalDate
 
-class WeeklyCalenderAdapter (
+class WeeklyCalenderAdapter(
     private val nameOfYear: ArrayList<LocalDate?>,
     private val onItemListener: OnItemListener,
-    private val selectedDate:LocalDate
+    private val selectedDate: LocalDate
 ) :
-RecyclerView.Adapter<WeeklyCalenderAdapter.WeeklyCalenderViewHolder>() {
+    RecyclerView.Adapter<WeeklyCalenderAdapter.WeeklyCalenderViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeeklyCalenderViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view: View = inflater.inflate(R.layout.monthly_calendar_cell_view, parent, false)
@@ -24,10 +24,10 @@ RecyclerView.Adapter<WeeklyCalenderAdapter.WeeklyCalenderViewHolder>() {
     override fun onBindViewHolder(holder: WeeklyCalenderViewHolder, position: Int) {
         val date = nameOfYear[position]
         holder.cellYearText.text = date?.dayOfMonth?.toString() ?: ""
-        if (selectedDate == date){
+        if (selectedDate == date) {
             holder.calenderCell.setBackgroundColor(R.drawable.custom_button)
         }
-        if(LocalDate.now().equals(date)){
+        if (LocalDate.now().equals(date)) {
             holder.calenderCell.setBackgroundResource(R.drawable.custom_button)
         }
     }
@@ -40,7 +40,10 @@ RecyclerView.Adapter<WeeklyCalenderAdapter.WeeklyCalenderViewHolder>() {
         fun onItemClick(position: Int, dayText: String?)
     }
 
-    inner class WeeklyCalenderViewHolder(itemView: View, private val onItemListener: OnItemListener) :
+    inner class WeeklyCalenderViewHolder(
+        itemView: View,
+        private val onItemListener: OnItemListener
+    ) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val cellYearText: TextView = itemView.findViewById(
             R.id.cellDayText
@@ -48,6 +51,7 @@ RecyclerView.Adapter<WeeklyCalenderAdapter.WeeklyCalenderViewHolder>() {
         val calenderCell: ConstraintLayout = itemView.findViewById(
             R.id.calender_cell
         )
+
         override fun onClick(view: View?) {
             onItemListener.onItemClick(adapterPosition, cellYearText.text as String)
         }

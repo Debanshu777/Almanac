@@ -41,7 +41,7 @@
             android:layout_marginStart="15dp"
             android:layout_weight="0.8"
             android:padding="5dp"
-            android:text="January, 2022"
+            android:text="@string/dummy_date"
             android:textAllCaps="true"
             android:textColor="@color/darker_grey"
             android:textSize="18sp"
@@ -56,17 +56,18 @@
                 android:id="@+id/month_display_left_shift"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
+                android:layout_marginEnd="15dp"
                 android:background="@null"
+                android:contentDescription="@string/left_shift_button"
                 android:padding="3dp"
                 android:src="@drawable/ic_left_arrow" />
 
             <ImageButton
-
                 android:id="@+id/month_display_right_shift"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:background="@null"
+                android:contentDescription="@string/right_shift_button"
                 android:gravity="center"
                 android:padding="3dp"
                 android:src="@drawable/ic_right_arrow" />

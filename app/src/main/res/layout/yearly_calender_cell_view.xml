@@ -12,7 +12,7 @@
         android:id="@+id/cellYearText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2020"
+        android:text="@string/dummy_data2"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textAlignment="center"
