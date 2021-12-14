@@ -26,7 +26,9 @@ class CalenderViewModel : ViewModel() {
 
     fun setSelectedDateFromSelectedYear(year: Int) {
         viewModelScope.launch {
-            val yearToDate= "$year-${selectedDate.value!!.monthValue}-${selectedDate.value!!.dayOfMonth}"
+            val dateCalculation = if (selectedDate.value!!.dayOfMonth>=10) (selectedDate.value!!.dayOfMonth).toString() else ("0${selectedDate.value!!.dayOfMonth}")
+            val monthCalculation = if(selectedDate.value!!.monthValue+1 >= 10) (selectedDate.value!!.monthValue+1).toString() else ("0${selectedDate.value!!.monthValue+1}")
+            val yearToDate= "$year-${monthCalculation}-$dateCalculation"
             selectedDate.value =
                 LocalDate.parse(yearToDate)
             formatDateString.value = selectedDate.value!!.format(CalenderUtils.dayMonthYearFormatter)
