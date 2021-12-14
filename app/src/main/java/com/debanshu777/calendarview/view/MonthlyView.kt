@@ -1,6 +1,7 @@
 package com.debanshu777.calendarview.view
 
 import android.os.Bundle
+import android.transition.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,6 +47,11 @@ class MonthlyView : Fragment(), MonthlyCalendarAdapter.OnItemListener {
                 val layoutManager = GridLayoutManager(context, 7)
                 binding.monthlyCalenderRecyclerView.layoutManager = layoutManager
                 binding.monthlyCalenderRecyclerView.adapter = calenderAdapter
+                if(selectedDate.month == LocalDate.now().month){
+                    binding.todayButton.visibility=View.INVISIBLE
+                }else{
+                    binding.todayButton.visibility=View.VISIBLE
+                }
             }
         )
         viewModel.formatDateString.observe(

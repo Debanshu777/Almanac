@@ -50,6 +50,11 @@ class WeeklyView : Fragment(), WeeklyCalenderAdapter.OnItemListener {
                 val layoutManager = GridLayoutManager(context, 7)
                 binding.weeklyCalenderRecyclerView.layoutManager = layoutManager
                 binding.weeklyCalenderRecyclerView.adapter = calenderAdapter
+                if(selectedDate.month == LocalDate.now().month){
+                    binding.todayButton.visibility=View.INVISIBLE
+                }else{
+                    binding.todayButton.visibility=View.VISIBLE
+                }
             }
         )
         binding.weeklyDisplayLeftShift.setOnClickListener {
