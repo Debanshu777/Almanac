@@ -41,8 +41,8 @@ class YearlyView : Fragment(), YearlyCalenderAdapter.OnItemListener {
         })
         viewModel.yearArrayList.value = CalenderUtils.yearArray(currentDate,pageNumber!!)
 
-        binding.monthChangeButton.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+        binding.weeklyChangeButton.setOnClickListener {
+            findNavController().navigate(R.id.action_YearlyView_to_WeeklyView)
         }
         binding.yearlyDisplayLeftShift.setOnClickListener {
             viewModel.yearViewPageNumber.value = viewModel.yearViewPageNumber.value?.minus(1)
@@ -70,6 +70,6 @@ class YearlyView : Fragment(), YearlyCalenderAdapter.OnItemListener {
     override fun onItemClick(position: Int, yearText: String?) {
         Log.i("here",yearText.toString())
         viewModel.setSelectedDateFromSelectedYear(yearText!!.toInt())
-        findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+        findNavController().navigate(R.id.action_YearlyView_to_MonthlyView)
     }
 }

@@ -37,7 +37,7 @@ class MonthlyView : Fragment(), MonthlyCalendarAdapter.OnItemListener {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity())[CalenderViewModel::class.java]
         binding.yearChangeButton.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            findNavController().navigate(R.id.action_MonthlyView_to_YearlyView)
         }
         viewModel.selectedDate.observe(
             viewLifecycleOwner, { value ->

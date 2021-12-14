@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_monthly_view">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            android:id="@+id/action_MonthlyView_to_YearlyView"
             app:destination="@id/YearlyView" />
     </fragment>
     <fragment
@@ -20,9 +20,20 @@
         android:name="com.debanshu777.calendarview.view.YearlyView"
         android:label="@string/yearly_view"
         tools:layout="@layout/fragment_yearly_view">
-
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            android:id="@+id/action_YearlyView_to_WeeklyView"
+            app:destination="@id/WeeklyView" />
+        <action
+            android:id="@+id/action_YearlyView_to_MonthlyView"
+            app:destination="@id/MonthlyView" />
+    </fragment>
+    <fragment
+        android:id="@+id/WeeklyView"
+        android:name="com.debanshu777.calendarview.view.WeeklyView"
+        android:label="fragment_weekly_view"
+        tools:layout="@layout/fragment_weekly_view" >
+        <action
+            android:id="@+id/action_WeeklyView_to_MonthlyView"
             app:destination="@id/MonthlyView" />
     </fragment>
 </navigation>
