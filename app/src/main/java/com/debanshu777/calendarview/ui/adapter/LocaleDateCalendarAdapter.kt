@@ -1,4 +1,4 @@
-package com.debanshu777.calendarview.adapter
+package com.debanshu777.calendarview.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,19 +9,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.debanshu777.calendarview.R
 import java.time.LocalDate
 
-class MonthlyCalendarAdapter(
+class LocaleDateCalendarAdapter(
     private val daysOfMonth: ArrayList<LocalDate?>,
     private val onItemListener: OnItemListener,
     private val selectedDate: LocalDate
 ) :
-    RecyclerView.Adapter<MonthlyCalendarAdapter.MonthlyCalendarViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MonthlyCalendarViewHolder {
+    RecyclerView.Adapter<LocaleDateCalendarAdapter.LocaleDateCalendarViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocaleDateCalendarViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view: View = inflater.inflate(R.layout.monthly_calendar_cell_view, parent, false)
-        return MonthlyCalendarViewHolder(view, onItemListener)
+        return LocaleDateCalendarViewHolder(view, onItemListener)
     }
 
-    override fun onBindViewHolder(holder: MonthlyCalendarViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: LocaleDateCalendarViewHolder, position: Int) {
         val date = daysOfMonth[position]
         holder.cellDayText.text = date?.dayOfMonth?.toString() ?: ""
         if (selectedDate == date) {
@@ -40,7 +40,7 @@ class MonthlyCalendarAdapter(
         fun onItemClick(position: Int, dayText: String?)
     }
 
-    inner class MonthlyCalendarViewHolder(
+    inner class LocaleDateCalendarViewHolder(
         itemView: View,
         private val onItemListener: OnItemListener
     ) :

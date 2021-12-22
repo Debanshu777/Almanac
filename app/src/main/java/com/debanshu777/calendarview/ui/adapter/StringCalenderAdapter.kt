@@ -1,4 +1,4 @@
-package com.debanshu777.calendarview.adapter
+package com.debanshu777.calendarview.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,18 +7,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.debanshu777.calendarview.R
 
-class YearlyCalenderAdapter(
+class StringCalenderAdapter(
     private val nameOfYear: ArrayList<String>,
     private val onItemListener: OnItemListener
 ) :
-    RecyclerView.Adapter<YearlyCalenderAdapter.YearlyCalenderViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): YearlyCalenderViewHolder {
+    RecyclerView.Adapter<StringCalenderAdapter.StringCalenderViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StringCalenderViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view: View = inflater.inflate(R.layout.yearly_calender_cell_view, parent, false)
-        return YearlyCalenderViewHolder(view, onItemListener)
+        return StringCalenderViewHolder(view, onItemListener)
     }
 
-    override fun onBindViewHolder(holder: YearlyCalenderViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: StringCalenderViewHolder, position: Int) {
         holder.cellYearText.text = nameOfYear[position]
     }
 
@@ -30,7 +30,7 @@ class YearlyCalenderAdapter(
         fun onItemClick(position: Int, dayText: String?)
     }
 
-    inner class YearlyCalenderViewHolder(
+    inner class StringCalenderViewHolder(
         itemView: View,
         private val onItemListener: OnItemListener
     ) :

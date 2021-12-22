@@ -1,4 +1,4 @@
-package com.debanshu777.calendarview.viewModel
+package com.debanshu777.calendarview.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

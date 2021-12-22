@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/MonthlyView"
-        android:name="com.debanshu777.calendarview.view.MonthlyView"
+        android:name="com.debanshu777.calendarview.ui.screens.MonthlyView"
         android:label="@string/monthly_view"
         tools:layout="@layout/fragment_monthly_view">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/YearlyView"
-        android:name="com.debanshu777.calendarview.view.YearlyView"
+        android:name="com.debanshu777.calendarview.ui.screens.YearlyView"
         android:label="@string/yearly_view"
         tools:layout="@layout/fragment_yearly_view">
         <action
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/WeeklyView"
-        android:name="com.debanshu777.calendarview.view.WeeklyView"
+        android:name="com.debanshu777.calendarview.ui.screens.WeeklyView"
         android:label="fragment_weekly_view"
         tools:layout="@layout/fragment_weekly_view" >
         <action

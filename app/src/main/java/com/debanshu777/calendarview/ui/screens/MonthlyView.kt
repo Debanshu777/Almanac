@@ -1,7 +1,6 @@
-package com.debanshu777.calendarview.view
+package com.debanshu777.calendarview.ui.screens
 
 import android.os.Bundle
-import android.transition.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,15 +9,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.debanshu777.calendarview.R
-import com.debanshu777.calendarview.adapter.MonthlyCalendarAdapter
+import com.debanshu777.calendarview.ui.adapter.LocaleDateCalendarAdapter
 import com.debanshu777.calendarview.databinding.FragmentMonthlyViewBinding
 import com.debanshu777.calendarview.utils.CalenderUtils
 import com.debanshu777.calendarview.utils.CalenderUtils.daysInMonthArray
-import com.debanshu777.calendarview.viewModel.CalenderViewModel
+import com.debanshu777.calendarview.ui.CalenderViewModel
 import com.google.android.material.snackbar.Snackbar
 import java.time.LocalDate
 
-class MonthlyView : Fragment(), MonthlyCalendarAdapter.OnItemListener {
+class MonthlyView : Fragment(), LocaleDateCalendarAdapter.OnItemListener {
 
     private var _binding: FragmentMonthlyViewBinding? = null
     private val binding get() = _binding!!
@@ -43,7 +42,7 @@ class MonthlyView : Fragment(), MonthlyCalendarAdapter.OnItemListener {
             viewLifecycleOwner, { value ->
                 selectedDate = value
                 val calenderAdapter =
-                    MonthlyCalendarAdapter(daysInMonthArray(value), this, selectedDate)
+                    LocaleDateCalendarAdapter(daysInMonthArray(value), this, selectedDate)
                 val layoutManager = GridLayoutManager(context, 7)
                 binding.monthlyCalenderRecyclerView.layoutManager = layoutManager
                 binding.monthlyCalenderRecyclerView.adapter = calenderAdapter

@@ -1,12 +1,12 @@
-package com.debanshu777.calendarview
+package com.debanshu777.calendarview.ui
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.debanshu777.calendarview.R
 import com.debanshu777.calendarview.databinding.ActivityMainBinding
-import com.debanshu777.calendarview.viewModel.CalenderViewModel
 import java.time.LocalDate
 import java.util.*
 

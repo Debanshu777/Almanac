@@ -1,4 +1,4 @@
-package com.debanshu777.calendarview.view
+package com.debanshu777.calendarview.ui.screens
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,14 +9,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.debanshu777.calendarview.R
-import com.debanshu777.calendarview.adapter.WeeklyCalenderAdapter
+import com.debanshu777.calendarview.ui.adapter.LocaleDateCalendarAdapter
 import com.debanshu777.calendarview.databinding.FragmentWeeklyViewBinding
 import com.debanshu777.calendarview.utils.CalenderUtils
-import com.debanshu777.calendarview.viewModel.CalenderViewModel
+import com.debanshu777.calendarview.ui.CalenderViewModel
 import com.google.android.material.snackbar.Snackbar
 import java.time.LocalDate
 
-class WeeklyView : Fragment(), WeeklyCalenderAdapter.OnItemListener {
+class WeeklyView : Fragment(), LocaleDateCalendarAdapter.OnItemListener {
 
     private var _binding: FragmentWeeklyViewBinding? = null
     private val binding get() = _binding!!
@@ -46,7 +46,7 @@ class WeeklyView : Fragment(), WeeklyCalenderAdapter.OnItemListener {
             viewLifecycleOwner, { value ->
                 selectedDate = value
                 val calenderAdapter =
-                    WeeklyCalenderAdapter(CalenderUtils.daysInWeekArray(value), this, selectedDate)
+                    LocaleDateCalendarAdapter(CalenderUtils.daysInWeekArray(value), this, selectedDate)
                 val layoutManager = GridLayoutManager(context, 7)
                 binding.weeklyCalenderRecyclerView.layoutManager = layoutManager
                 binding.weeklyCalenderRecyclerView.adapter = calenderAdapter

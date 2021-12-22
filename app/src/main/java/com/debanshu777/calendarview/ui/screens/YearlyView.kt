@@ -1,4 +1,4 @@
-package com.debanshu777.calendarview.view
+package com.debanshu777.calendarview.ui.screens
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,13 +9,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.debanshu777.calendarview.R
-import com.debanshu777.calendarview.adapter.YearlyCalenderAdapter
+import com.debanshu777.calendarview.ui.adapter.StringCalenderAdapter
 import com.debanshu777.calendarview.databinding.FragmentYearlyViewBinding
 import com.debanshu777.calendarview.utils.CalenderUtils
-import com.debanshu777.calendarview.viewModel.CalenderViewModel
+import com.debanshu777.calendarview.ui.CalenderViewModel
 import java.time.LocalDate
 
-class YearlyView : Fragment(), YearlyCalenderAdapter.OnItemListener {
+class YearlyView : Fragment(), StringCalenderAdapter.OnItemListener {
 
     private var _binding: FragmentYearlyViewBinding? = null
     private val binding get() = _binding!!
@@ -55,7 +55,7 @@ class YearlyView : Fragment(), YearlyCalenderAdapter.OnItemListener {
             findNavController().navigate(R.id.action_YearlyView_to_MonthlyView)
         }
         viewModel.yearArrayList.observe(viewLifecycleOwner, { yearArrayList ->
-            val calenderAdapter = YearlyCalenderAdapter(yearArrayList, this)
+            val calenderAdapter = StringCalenderAdapter(yearArrayList, this)
             val layoutManager = GridLayoutManager(context, 4)
             binding.yearlyCalenderRecyclerView.layoutManager = layoutManager
             binding.yearlyCalenderRecyclerView.adapter = calenderAdapter
