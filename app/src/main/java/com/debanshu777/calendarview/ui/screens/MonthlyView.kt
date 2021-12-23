@@ -46,7 +46,7 @@ class MonthlyView : Fragment(), LocaleDateCalendarAdapter.OnItemListener {
                 val layoutManager = GridLayoutManager(context, 7)
                 binding.monthlyCalenderRecyclerView.layoutManager = layoutManager
                 binding.monthlyCalenderRecyclerView.adapter = calenderAdapter
-                if(selectedDate.month == LocalDate.now().month){
+                if(selectedDate.month == LocalDate.now().month && selectedDate.year ==LocalDate.now().year){
                     binding.todayButton.visibility=View.INVISIBLE
                 }else{
                     binding.todayButton.visibility=View.VISIBLE
